@@ -17,6 +17,7 @@ public class ServiceFacade {
 
     /**
      * @Qualifier can be used if there are more than one bean defined for the same type
+     * @Autowired not required if there is only one constructor
      *
      * @param dateService Date Service
      * @param uidService UID Service
