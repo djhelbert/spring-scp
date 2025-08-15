@@ -4,9 +4,11 @@ import org.example.service.UidService;
 import org.example.service.UidServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
+@Lazy(false)
 public class OtherConfig {
     /**
      * New Bean Provided Every Time

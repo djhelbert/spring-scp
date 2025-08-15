@@ -5,6 +5,7 @@ import org.example.service.DateServiceImpl;
 import org.example.service.GreetingService;
 import org.example.service.GreetingServiceImpl;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
@@ -14,6 +15,7 @@ import org.springframework.core.env.Environment;
 @Configuration
 @PropertySource("classpath:app.properties")   // or "file:app.properties"
 @Import(OtherConfig.class)
+@ComponentScan("org.example.scan")
 public class BeanConfig {
     /**
      * Only 1 Date Service will be created
@@ -22,7 +24,7 @@ public class BeanConfig {
     @Bean
     @Scope("singleton")
     public DateService dateService() {
-        return new DateServiceImpl();
+        return new DateServiceImpl();   // Method name determines bean name
     }
 
     @Bean

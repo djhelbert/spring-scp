@@ -26,6 +26,8 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.springframework/spring-context
     implementation("org.springframework:spring-context:6.2.10")
+
+    implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

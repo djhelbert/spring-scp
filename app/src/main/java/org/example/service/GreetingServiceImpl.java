@@ -18,4 +18,8 @@ public class GreetingServiceImpl implements GreetingService {
     public String getGreeting(String name) {
         return hello + " " + name + ". " + bye;
     }
+
+    public String sayBye(@Value("${bye}") String bye) {
+        return bye;
+    }
 }

@@ -4,6 +4,7 @@
 package org.example;
 
 import org.example.config.BeanConfig;
+import org.example.scan.ServiceFacade;
 import org.example.service.DateService;
 import org.example.service.DateServiceImpl;
 import org.example.service.GreetingService;
@@ -26,5 +27,9 @@ public class App {
 
         GreetingService greetingService = context.getBean("greetingService", GreetingService.class);
         System.out.println(greetingService.getGreeting("Dave"));
+
+        ServiceFacade facade = context.getBean(ServiceFacade.class);
+        var map = facade.uidMap();
+        System.out.println(map);
     }
 }
