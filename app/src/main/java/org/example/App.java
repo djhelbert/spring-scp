@@ -3,12 +3,28 @@
  */
 package org.example;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import org.example.config.BeanConfig;
+import org.example.service.DateService;
+import org.example.service.DateServiceImpl;
+import org.example.service.GreetingService;
+import org.example.service.UidService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        // Spring DI container
+        ApplicationContext context = new AnnotationConfigApplicationContext(BeanConfig.class);
+
+        DateService service = context.getBean(DateServiceImpl.class);
+        // service = context.getBean("dateService", DateServiceImpl.class); name from method
+        // service = (DateService) context.getBean("dateService"); name from method
+        System.out.println(service.getDate());
+
+        UidService uidService = context.getBean(UidService.class);
+        System.out.println(uidService.getUid());
+
+        GreetingService greetingService = context.getBean("greetingService", GreetingService.class);
+        System.out.println(greetingService.getGreeting("Dave"));
     }
 }
