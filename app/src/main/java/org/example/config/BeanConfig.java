@@ -27,7 +27,7 @@ public class BeanConfig {
         return new DateServiceImpl();   // Method name determines bean name
     }
 
-    @Bean
+    @Bean(name = {"greetingService", "greetingServiceAlias"})
     public GreetingService greetingService(Environment env) {
         return new GreetingServiceImpl(env);
     }
