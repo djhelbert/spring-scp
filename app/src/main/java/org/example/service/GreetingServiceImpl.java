@@ -17,6 +17,10 @@ public class GreetingServiceImpl implements GreetingService, InitializingBean {
 
     @Override
     public String getGreeting(String name) {
+        if(name == null) {
+            throw new IllegalArgumentException("name is required");
+        }
+
         return hello + " " + name + ". " + bye;
     }
 

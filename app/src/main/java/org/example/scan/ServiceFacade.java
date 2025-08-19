@@ -28,6 +28,10 @@ public class ServiceFacade {
         this.uidService = uidService;
     }
 
+    public String getUid() {
+        return uidService.getUid();
+    }
+
     public Map<String, String> uidMap() {
         Map<String, String> map = new HashMap<>();
         map.put(uidService.getUid(), dateService.getDate().toString());

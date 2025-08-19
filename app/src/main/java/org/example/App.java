@@ -6,7 +6,6 @@ package org.example;
 import org.example.config.BeanConfig;
 import org.example.scan.ServiceFacade;
 import org.example.service.DateService;
-import org.example.service.DateServiceImpl;
 import org.example.service.GreetingService;
 import org.example.service.UidService;
 import org.springframework.context.ApplicationContext;
@@ -17,7 +16,7 @@ public class App {
         // Spring DI container
         ApplicationContext context = new AnnotationConfigApplicationContext(BeanConfig.class);
 
-        DateService service = context.getBean(DateServiceImpl.class);
+        DateService service = context.getBean(DateService.class);
         // service = context.getBean("dateService", DateServiceImpl.class); name from method
         // service = (DateService) context.getBean("dateService"); name from method
         System.out.println(service.getDate());
@@ -27,9 +26,11 @@ public class App {
 
         GreetingService greetingService = context.getBean("greetingService", GreetingService.class);
         System.out.println(greetingService.getGreeting("Dave"));
+        //System.out.println(greetingService.getGreeting(null));  // trigger exception aspect
 
         ServiceFacade facade = context.getBean(ServiceFacade.class);
         var map = facade.uidMap();
         System.out.println(map);
+        System.out.println(facade.getUid());
     }
 }
