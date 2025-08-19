@@ -31,4 +31,9 @@ public class BeanConfig {
     public GreetingService greetingService(Environment env) {
         return new GreetingServiceImpl(env);
     }
+
+    @Bean
+    public static CustomBeanPostProcessor customBeanPostProcessor() {
+        return new CustomBeanPostProcessor();
+    }
 }
