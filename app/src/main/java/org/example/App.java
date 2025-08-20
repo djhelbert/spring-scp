@@ -12,25 +12,26 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App {
-    public static void main(String[] args) {
-        // Spring DI container
-        ApplicationContext context = new AnnotationConfigApplicationContext(BeanConfig.class);
 
-        DateService service = context.getBean(DateService.class);
-        // service = context.getBean("dateService", DateServiceImpl.class); name from method
-        // service = (DateService) context.getBean("dateService"); name from method
-        System.out.println(service.getDate());
+  public static void main(String[] args) {
+    // Spring DI container
+    ApplicationContext context = new AnnotationConfigApplicationContext(BeanConfig.class);
 
-        UidService uidService = context.getBean(UidService.class);
-        System.out.println(uidService.getUid());
+    DateService service = context.getBean(DateService.class);
+    // service = context.getBean("dateService", DateServiceImpl.class); name from method
+    // service = (DateService) context.getBean("dateService"); name from method
+    System.out.println(service.getDate());
 
-        GreetingService greetingService = context.getBean("greetingService", GreetingService.class);
-        System.out.println(greetingService.getGreeting("Dave"));
-        //System.out.println(greetingService.getGreeting(null));  // trigger exception aspect
+    UidService uidService = context.getBean(UidService.class);
+    System.out.println(uidService.getUid());
 
-        ServiceFacade facade = context.getBean(ServiceFacade.class);
-        var map = facade.uidMap();
-        System.out.println(map);
-        System.out.println(facade.getUid());
-    }
+    GreetingService greetingService = context.getBean("greetingService", GreetingService.class);
+    System.out.println(greetingService.getGreeting("Dave"));
+    //System.out.println(greetingService.getGreeting(null));  // trigger exception aspect
+
+    ServiceFacade facade = context.getBean(ServiceFacade.class);
+    var map = facade.uidMap();
+    System.out.println(map);
+    System.out.println(facade.getUid());
+  }
 }

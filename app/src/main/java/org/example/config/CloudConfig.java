@@ -2,8 +2,10 @@ package org.example.config;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import java.time.LocalDate;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
@@ -13,23 +15,30 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 @Profile("cloud")
 public class CloudConfig {
-    @Value("#{environment['bye']}")
-    String bye;
 
-    @Value("#{environment['count'] + 1}")   // systemProperties and systemEnvironment are other implicit variables
-    String countPlusOne;
+  @Value("#{environment['bye']}")
+  String bye;
 
-    @PostConstruct
-    void postConstruct() {
-        System.out.println("Post Construct");
-        System.out.println("Count +1 " + countPlusOne);
-    }
+  @Value("#{environment['count'] + 1}")   // systemProperties and systemEnvironment are other implicit variables
+  String countPlusOne;
 
-    /**
-     * Called when context shuts down properly
-     */
-    @PreDestroy
-    void preDestroy() {
-        System.out.println("Pre Destroy");
-    }
+  @PostConstruct
+  void postConstruct() {
+    System.out.println("CloudConfig Post Construct");
+    System.out.println("Count +1 is " + countPlusOne);
+  }
+
+  @Bean
+  @Qualifier("startupDate")
+  public LocalDate startupDate() {
+    return LocalDate.now();
+  }
+
+  /**
+   * Called when context shuts down properly
+   */
+  @PreDestroy
+  void preDestroy() {
+    System.out.println("CloudConfig Pre Destroy");
+  }
 }

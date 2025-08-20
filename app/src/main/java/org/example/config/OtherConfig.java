@@ -10,13 +10,15 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 @Lazy(false)
 public class OtherConfig {
-    /**
-     * New Bean Provided Every Time
-     * @return UidService Bean
-     */
-    @Bean
-    @Scope("prototype")
-    public UidService uidService() {
-        return new UidServiceImpl();
-    }
+
+  /**
+   * New Bean Provided Every Time
+   *
+   * @return UidService Bean
+   */
+  @Bean
+  @Scope("prototype")
+  public UidService uidService() {
+    return new UidServiceImpl();
+  }
 }
