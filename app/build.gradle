@@ -18,18 +18,17 @@ repositories {
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation libs.junit.jupiter
-
+    testImplementation 'org.springframework:spring-test:6.2.10'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     // This dependency is used by the application.
     implementation libs.guava
 
+    implementation 'org.springframework:spring-jdbc:6.2.10'
     implementation 'org.springframework:spring-aspects:6.2.10'
-
-    // https://mvnrepository.com/artifact/org.springframework/spring-context
     implementation("org.springframework:spring-context:6.2.10")
-
     implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
+    implementation 'com.h2database:h2:2.3.232'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

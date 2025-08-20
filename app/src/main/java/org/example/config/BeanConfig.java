@@ -15,7 +15,7 @@ import org.springframework.core.env.Environment;
 
 @Configuration
 @PropertySource("classpath:app.properties")   // or "file:app.properties"
-@Import({OtherConfig.class, CloudConfig.class})
+@Import({OtherConfig.class, CloudConfig.class, JdbcConfig.class})
 @ComponentScan({"org.example.scan", "org.example.aop"})
 @EnableAspectJAutoProxy
 public class BeanConfig {

@@ -3,11 +3,26 @@
  */
 package org.example;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import org.example.config.BeanConfig;
+import org.example.service.UidService;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
+@SpringJUnitConfig(classes = BeanConfig.class)
+@ActiveProfiles("cloud")
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-    }
+
+  @Autowired
+  UidService uidService;
+
+  @Test
+  @DisplayName("This is the test display name")
+  void appHasAGreeting() {
+    assertNotNull(uidService.getUid());
+  }
 }
