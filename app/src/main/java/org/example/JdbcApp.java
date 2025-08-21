@@ -24,5 +24,11 @@ public class JdbcApp {
 
     JdbcService service = context.getBean(JdbcService.class);
     service.createPersonTable();
+    service.createPerson(1, "Tom", "tom@email.com", 27);
+    System.out.println("Persons:" + service.getPersonCount());
+    System.out.println(service.getPersonMap(1));
+    System.out.println(service.findPersonById(1));
+    service.createPerson(2, "Mark", "mark@email.com", 29);
+    System.out.println(service.getPersonList());
   }
 }
