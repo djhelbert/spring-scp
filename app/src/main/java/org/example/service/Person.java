@@ -5,6 +5,7 @@ public class Person {
   private String name;
   private String email;
   private Integer age;
+  private Integer cars;
 
   public Integer getId() {
     return id;
@@ -38,8 +39,16 @@ public class Person {
     this.age = age;
   }
 
+  public Integer getCars() {
+    return cars;
+  }
+
+  public void setCars(Integer cars) {
+    this.cars = cars;
+  }
+
   @Override
   public String toString() {
-    return id + ":" + name + " " + email + " " + age;
+    return id + ":" + name + " " + email + " " + age + " " + cars;
   }
 }

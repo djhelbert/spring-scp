@@ -24,11 +24,23 @@ public class JdbcApp {
 
     JdbcService service = context.getBean(JdbcService.class);
     service.createPersonTable();
+    service.createCarTable();
+
     service.createPerson(1, "Tom", "tom@email.com", 27);
     System.out.println("Persons:" + service.getPersonCount());
     System.out.println(service.getPersonMap(1));
-    System.out.println(service.findPersonById(1));
+    //System.out.println(service.findPersonById(1));
     service.createPerson(2, "Mark", "mark@email.com", 29);
     System.out.println(service.getPersonList());
+    int updates = service.createCar(1,1, "Saturn", "Vue");
+    System.out.println(service.getPersonMap(1));
+    System.out.println(service.getCarMap(1));
+    try {
+      service.createCar(2, 1, "Buick", null);
+    } catch (RuntimeException e) {
+      System.err.println(e.getMessage());
+    }
+    System.out.println(service.findPersonById(1));
+    System.out.println("Done");
   }
 }
