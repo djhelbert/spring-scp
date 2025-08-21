@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -15,13 +16,20 @@ public class LoggingAspect {
 
   public final static String BEFORE = "'Before'";
   public final static String AROUND = "'Around'";
+  public final static String AFTER = "'Around'";
 
   private Logger logger = Logger.getLogger(LoggingAspect.class.getName());
 
   @Before("execution(* org.example.scan.Service*.get*(..))")
-  public void implLogging(JoinPoint joinPoint) {
+  public void implLoggingBefore(JoinPoint joinPoint) {
     logger.info(BEFORE + " advice implementation - " + joinPoint.getTarget().getClass() + //
         "; Executing before " + joinPoint.getSignature().getName() + "() method");
+  }
+
+  @After("execution(* org.example.scan.Service*.get*(..))")
+  public void implLoggingAfter(JoinPoint joinPoint) {
+    logger.info(AFTER + " advice implementation - " + joinPoint.getTarget().getClass() + //
+        "; Executing after " + joinPoint.getSignature().getName() + "() method");
   }
 
   @Around("execution(* org.example.scan.Service*.get*(..))")
