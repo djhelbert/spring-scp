@@ -4,12 +4,7 @@
 package org.example;
 
 import org.example.config.BeanConfig;
-import org.example.scan.ServiceFacade;
-import org.example.service.DateService;
-import org.example.service.GreetingService;
 import org.example.service.JdbcService;
-import org.example.service.UidService;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class JdbcApp {
